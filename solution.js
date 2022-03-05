@@ -1,4 +1,16 @@
-var exist = function(board, word) {
+let board = [
+    ["A","B","C","E"],
+    ["S","F","C","S"],
+    ["A","D","E","E"]
+];
+
+let word1 = "ABCCED";
+let word2 = "SEE";
+let word3 = "ABCB";
+
+
+
+function findSearchTerm(board, word) {
     
     let rowLen = board.length - 1;
     let columnLen = board[0].length - 1;
@@ -14,7 +26,7 @@ var exist = function(board, word) {
         //if we find a match, return true without correcting the board
         if(DFS(row-1, column, idx+1) || DFS(row+1, column, idx+1) || DFS(row, column+1, idx+1) || DFS(row, column-1, idx+1)) return true;
         
-        //our recursive calls will mark the board unvisited if we didn't find the right amount of matches
+        //our recursive calls will return the board back to normal if we didn't find the right amount of matches
         board[row][column] = word[idx];
     }
     
@@ -27,3 +39,10 @@ var exist = function(board, word) {
     
     return false;
 };
+
+//resetting the board since it ends up with the '#' characters in it before testing each input
+console.log(findSearchTerm(board, word1));
+board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]];
+console.log(findSearchTerm(board, word2));
+board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]];
+console.log(findSearchTerm(board, word3));

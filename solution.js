@@ -46,3 +46,14 @@ board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]];
 console.log(findSearchTerm(board, word2));
 board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]];
 console.log(findSearchTerm(board, word3));
+
+//I tried doing this iteratively using a stack and pushing in neighbor coordinates but ran into error for this test
+//ABCESEEEFS
+//[ ["A","B","C","E"],
+//  ["S","F","E","S"],
+//  ["A","D","E","E"]]
+//Solving it iteratively, I ran into an error where I would traverse A -> B -> C -> E    and get stuck in the corner
+//                                                                                  |
+//                                                                             E <- S
+//                                                                             |    
+//                                                                             E -> E 
